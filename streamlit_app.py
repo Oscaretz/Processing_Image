@@ -7,13 +7,13 @@ def apply_filter(image, filter_type):
     image.save("image.jpg")  # Guardar imagen temporalmente
 
     if filter_type == "Test Python":
-        subprocess.run(["python", "unit_test.py",])
+        subprocess.run(["python", "unit_test.py"])
     elif filter_type == "Test Numpy":
-        subprocess.run(["python", "unit_test_numpy.py",])
+        subprocess.run(["python", "unit_test_numpy.py"])
     
     return Image.open("temp_output.jpg")
 
-st.title("Image Processing App - Testing beta")
+st.title("Image Processing App - Testing beta 2")
 uploaded_file = st.file_uploader("Upload an image", type=["jpg", "png", "jpeg"])
 
 if uploaded_file:
