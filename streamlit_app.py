@@ -7,7 +7,7 @@ def apply_filter(image, filter_type):
     image.save("temp_input.jpg")  # Guardar imagen temporalmente
 
     if filter_type == "Test Python":
-        subprocess.run(["python", "unit_test_python.py", "temp_input.jpg", "temp_output.jpg"])
+        subprocess.run(["python", "unit_test.py", "temp_input.jpg", "temp_output.jpg"])
     elif filter_type == "Test Numpy":
         subprocess.run(["python", "unit_test_numpy.py", "temp_input.jpg", "temp_output.jpg"])
     
