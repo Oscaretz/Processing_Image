@@ -4,12 +4,12 @@ import numpy as np
 import subprocess
 
 def apply_filter(image, filter_type):
-    image.save("temp_input.jpg")  # Guardar imagen temporalmente
+    image.save("image.jpg")  # Guardar imagen temporalmente
 
     if filter_type == "Test Python":
-        subprocess.run(["python", "unit_test.py", "temp_input.jpg", "temp_output.jpg"])
+        subprocess.run(["python", "unit_test.py",])
     elif filter_type == "Test Numpy":
-        subprocess.run(["python", "unit_test_numpy.py", "temp_input.jpg", "temp_output.jpg"])
+        subprocess.run(["python", "unit_test_numpy.py",])
     
     return Image.open("temp_output.jpg")
 
