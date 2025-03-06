@@ -1,13 +1,6 @@
 import time
 import pathlib
-from process_image_python import (
-    read_image, 
-    save_image, 
-    create_gaussian_kernel,
-    apply_gaussian,
-    apply_sobel,
-    apply_median_filter
-)
+from process_image_python import *
 
 def test_filters() -> None:
     
