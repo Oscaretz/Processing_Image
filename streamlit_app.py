@@ -13,7 +13,7 @@ def apply_filter(image, filter_type):
     
     return Image.open("temp_output.jpg")
 
-st.title("Image Processing App - Testing beta 2")
+st.title("Image Processing App - Testing beta 3")
 uploaded_file = st.file_uploader("Upload an image", type=["jpg", "png", "jpeg"])
 
 if uploaded_file:
