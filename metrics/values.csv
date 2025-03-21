@@ -1,0 +1,10 @@
+Filter Type,Implementation,Processing Time (seconds)
+Sobel,Python,0.5414190292358398
+Gaussian,Python,2.7779343128204346
+Median Noise-reduction,Python,0.44290757179260254
+Sobel,Numpy,0.19301557540893555
+Gaussian,Numpy,0.025699615478515625
+Median Noise-reduction,Numpy,0.025331735610961914
+Sobel,Cython,0.014055967330932617
+Gaussian,Cython,0.021977901458740234
+Median Noise-reduction,Cython,0.022003889083862305

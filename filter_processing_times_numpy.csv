@@ -1,0 +1,2 @@
+Filter Type,Implementation,Processing Time (seconds)
+Sobel,Numpy,2.351867437362671

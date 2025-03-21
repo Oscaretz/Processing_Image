@@ -1,55 +1,71 @@
 import time
 import pathlib
+import csv
 from process_image_python import *
 
 def test_filters() -> None:
-    
-    """Unit test to run all filters from one image input"""
+    """Unit test to run all filters from one image input and store the results in a CSV"""
 
-    # Input/output paths
-    input_path = str(pathlib.Path().resolve()) + "/image.jpeg"
-    output_sobel = "python/output_sobel.jpg"
-    output_gaussian = "python/output_gaussian.jpg"
-    output_noise_reduction = "python/output_noise_reduction.jpg"
-    
-    # Read the input image
-    print("Reading image...")
-    image = read_image(input_path)
-    
-    # Test Sobel filter
-    print("\nTesting Sobel filter...")
-    start_time = time.time()
-    sobel_image = apply_sobel(image)
-    sobel_time = time.time() - start_time
-    save_image(sobel_image, output_sobel)
-    print(f"Sobel filter processing time: {sobel_time:.4f} seconds")
-    
-    # Test Gaussian filter
-    print("\nTesting Gaussian filter...")
-    start_time = time.time()
-    kernel = create_gaussian_kernel(5, sigma=1)  # 5x5 kernel
-    gaussian_image = apply_gaussian(image, kernel)
-    gaussian_time = time.time() - start_time
-    save_image(gaussian_image, output_gaussian)
-    print(f"Gaussian filter processing time: {gaussian_time:.4f} seconds")
+    # Definir rutas de entrada y salida
+    input_path = str(pathlib.Path().resolve()) + "/image.jpg"
+    output_sobel = "python/Sobel.jpg"
+    output_gaussian = "python/Gaussian.jpg"
+    output_noise_reduction = "python/Noise_reduction.jpg"
+
+    # Definir el nombre del archivo CSV
+    csv_dir = pathlib.Path("metrics")
+    csv_file = csv_dir / "values.csv"
+
+    # Crear carpeta 'metrics' si no existe
+    csv_dir.mkdir(parents=True, exist_ok=True)
+
+    # Definir nombres de columnas del CSV
+    fieldnames = ['Filter Type', 'Implementation', 'Processing Time (seconds)']
+
+    # Verificar si el archivo ya existe y si está vacío
+    file_exists = csv_file.exists()
+    file_empty = not file_exists or csv_file.stat().st_size == 0  # True si el archivo no existe o está vacío
+
+    with open(csv_file, mode='a', newline='') as file:
+        writer = csv.DictWriter(file, fieldnames=fieldnames)
+
+        # Escribir encabezados solo si el archivo es nuevo o está vacío
+        if file_empty:
+            writer.writeheader()
+
+        # Leer la imagen
+        print("Reading image for python...")
+        image = read_image(input_path)
+
+        # Aplicar filtros y medir tiempo
+        filters = [
+            ("Sobel", apply_sobel, output_sobel),
+            ("Gaussian", lambda img: apply_gaussian(img, create_gaussian_kernel(9, sigma=3)), output_gaussian),
+            ("Median Noise-reduction", lambda img: apply_median_filter(img, (9, 9)), output_noise_reduction)
+
+        ]
 
 
-    # Test median noise-reduction filter
-    print("\nTesting Median noise-reduction filter...")
-    start_time = time.time()
-    noise_reduction_image = apply_median_filter(image, kernel)
-    noise_reduction_time = time.time() - start_time
-    save_image(noise_reduction_image, output_noise_reduction)
-    print(f"Median noise-reduction filter processing time: {noise_reduction_time:.4f} seconds")
-    
-    # Print summary
-    print("\nSummary:")
-    print(f"{'Filter Type':<20} {'Processing Time':>15}")
-    print("-" * 35)
-    print(f"{'Sobel':<20} {sobel_time:>15.4f}s")
-    print(f"{'Gaussian':<20} {gaussian_time:>15.4f}s")  
-    print(f"{'Median noise-reduction':<20} {noise_reduction_time:>13.4f}s")
-    print(f"{'Total':<20} {(sobel_time + gaussian_time + noise_reduction_time):>15.4f}s")
+
+        for filter_name, filter_func, output_path in filters:
+            print(f"\nTesting {filter_name} filter...")
+            start_time = time.time()
+            filtered_image = filter_func(image)
+            elapsed_time = time.time() - start_time
+            save_image(filtered_image, output_path)
+            print(f"{filter_name} filter processing time: {elapsed_time:.4f} seconds")
+            
+            # Guardar en CSV
+            writer.writerow({'Filter Type': filter_name, 'Implementation': 'Python', 'Processing Time (seconds)': elapsed_time})
+
+
+    # Mostrar resumen
+    print("\nSummary of python:")
+    print(f"{'Filter Type':<25} {'Processing Time':>15}")
+    print("-" * 40)
+    for row in filters:
+        print(f"{row[0]:<25} {elapsed_time:>15.4f}s")
+    print("Python finished")
 
 if __name__ == "__main__":
     test_filters()

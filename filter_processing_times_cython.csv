@@ -1,0 +1,5 @@
+Filter Type,Processing Time (s)
+Sobel,0.028679847717285156
+Gaussian,0.021950721740722656
+Median noise-reduction,0.0707848072052002
+Total,0.12141537666320801

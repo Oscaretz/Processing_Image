@@ -5,3 +5,5 @@ pathlib
 scipy
 setuptools
 streamlit
+streamlit-echarts
+matplot

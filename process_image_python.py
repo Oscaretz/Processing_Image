@@ -61,7 +61,7 @@ def create_gaussian_kernel(size, sigma=1) -> list:
         for j in range(size):
             x = i - center
             y = j - center
-            kernel[i][j] = math.exp(-(x**2 + y**2) / (2 * sigma**2))
+            kernel[i][j] = math.exp(-(x**2 + y**2) / (2 * sigma**2+2))
             sum_val += kernel[i][j]
 
     # Normalize the kernel
