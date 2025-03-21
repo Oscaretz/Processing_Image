@@ -6,6 +6,19 @@ from PIL import Image
 import streamlit as st
 from streamlit_echarts import st_echarts
 
+def check_installed(package):
+    try:
+        subprocess.run(["pip", "show", package], check=True, capture_output=True)
+        return True
+    except subprocess.CalledProcessError:
+        return False
+
+if not check_installed("Pillow"):
+    print("⚠️ Pillow NO está instalado en el entorno de Streamlit Cloud.")
+
+import PIL  # Esto fallará si no está instalado
+print("✅ Pillow está instalado correctamente.")
+
 def apply_filter(image, script_name):
     """Ejecuta un script externo y mide su tiempo de ejecución."""
     
@@ -233,8 +246,8 @@ if image:
 st.markdown(
     """
     ---
-    **Developed by Oscar Martinez Estevez, Braulio Perez Tamayo and David Hernandez Widman.**  
-    GitHub: [Oscaretz](https://github.com/Oscaretz/Processing_Image)  
+    **Developed by Oscar Martinez Estevez, Braulio Perez Tamayo, Moises Carrillo Alonzo and David Hernandez Pantoja.**  
+    GitHub: [Oscaretz/Processing_Image](https://github.com/Oscaretz/Processing_Image)  
     """, 
     unsafe_allow_html=True
 )
