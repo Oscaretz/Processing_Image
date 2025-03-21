@@ -234,7 +234,7 @@ st.markdown(
     """
     ---
     **Developed by Oscar Martinez Estevez, Braulio Perez Tamayo and David Hernandez Widman.**  
-    GitHub: [github.com/yourprofile](https://github.com/yourprofile)  
+    GitHub: [Oscaretz/Processing_Image](https://github.com/Oscaretz/Processing_Image)  
     """, 
     unsafe_allow_html=True
 )
