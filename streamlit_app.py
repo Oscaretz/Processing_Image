@@ -5,6 +5,11 @@ import time, math
 from PIL import Image
 import streamlit as st
 from streamlit_echarts import st_echarts
+import sys
+
+
+st.write(f"Python version: {sys.version}")
+st.write(f"Pillow version: {PIL.__version__}")
 
 def check_installed(package):
     try:
