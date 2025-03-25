@@ -1,5 +1,4 @@
-﻿pillow
-Pillow==11.1.0
+﻿Pillow>=11.1.0
 numpy
 cython
 pathlib
