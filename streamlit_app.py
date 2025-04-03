@@ -7,6 +7,9 @@ import streamlit as st
 from streamlit_echarts import st_echarts
 import sys
 
+# Reinstalando paquetes
+os.system("pip install -r requirements.txt")
+
 # Lista de nombres de carpetas
 folders = ['python_dir', 'cython_dir', 'numpy_dir']
 
