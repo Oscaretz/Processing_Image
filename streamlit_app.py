@@ -7,8 +7,16 @@ import streamlit as st
 from streamlit_echarts import st_echarts
 import sys
 
+# Lista de nombres de carpetas
+folders = ['python_dir', 'cython_dir', 'numpy_dir']
 
-os.system("pip install --no-cache-dir Pillow")
+# Crear cada carpeta si no existe
+for folder in folders:
+    if not os.path.exists(folder):
+        os.makedirs(folder)
+        print(f"Carpeta '{folder}' creada.")
+    else:
+        print(f"Carpeta '{folder}' ya existe.")
 
 
 def check_installed(package):
@@ -182,10 +190,6 @@ if image:
 
                 # ---- GRAFICAR IMAGENES EN TABLA ----
                 print('Printing the image results...')
-                # Directorios donde están guardadas las imágenes
-                python_dir = "python"
-                numpy_dir = "numpy"
-                cython_dir = "cython"
 
                 # Lista de filtros utilizados
                 filters = ["Sobel", "Gaussian", "Noise_reduction"]
@@ -209,9 +213,9 @@ if image:
                     st.write("**Cython**")
 
                 for filter_name in filters:
-                    python_img = os.path.join(python_dir, f"{filter_name}.jpg")
-                    numpy_img = os.path.join(numpy_dir, f"{filter_name}.jpg")
-                    cython_img = os.path.join(cython_dir, f"{filter_name}.jpg")
+                    python_img = os.path.join(f"python_dir", f"{filter_name}.jpg")
+                    numpy_img = os.path.join(f"numpy_dir", f"{filter_name}.jpg")
+                    cython_img = os.path.join(f"cython_dir", f"{filter_name}.jpg")
 
                     col1, col2, col3, col4 = st.columns(4)
 

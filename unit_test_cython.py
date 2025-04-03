@@ -17,9 +17,9 @@ def test_filters():
 
     # Input/output paths
     input_path = str(pathlib.Path().resolve()) + "/image.jpg"
-    output_sobel = "cython/Sobel.jpg"
-    output_gaussian = "cython/Gaussian.jpg"
-    output_noise_reduction = "cython/Noise_reduction.jpg"
+    output_sobel = "cython_dir/Sobel.jpg"
+    output_gaussian = "cython_dir/Gaussian.jpg"
+    output_noise_reduction = "cython_dir/Noise_reduction.jpg"
 
     # Definir la ruta y archivo CSV
     csv_dir = pathlib.Path("metrics")

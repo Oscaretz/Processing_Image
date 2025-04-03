@@ -9,9 +9,9 @@ def test_filters() -> None:
 
     # Input/output paths
     input_path = str(pathlib.Path().resolve()) + "/image.jpg"
-    output_sobel = "numpy/Sobel.jpg"
-    output_gaussian = "numpy/Gaussian.jpg"
-    output_noise_reduction = "numpy/Noise_reduction.jpg"
+    output_sobel = "numpy_dir/Sobel.jpg"
+    output_gaussian = "numpy_dir/Gaussian.jpg"
+    output_noise_reduction = "numpy_dir/Noise_reduction.jpg"
     
     # Prepare CSV for writing results
     csv_file = 'metrics/values.csv'
