@@ -1,4 +1,4 @@
-﻿Pillow
+﻿Pillow==11.1.0
 numpy
 cython
 pathlib
@@ -6,4 +6,4 @@ scipy
 setuptools
 streamlit
 streamlit-echarts
-matplot
+matplotlib

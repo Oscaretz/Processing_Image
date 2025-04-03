@@ -8,8 +8,8 @@ from streamlit_echarts import st_echarts
 import sys
 
 
-st.write(f"Python version: {sys.version}")
-st.write(f"Pillow version: {PIL.__version__}")
+os.system("pip install --no-cache-dir Pillow")
+
 
 def check_installed(package):
     try:
