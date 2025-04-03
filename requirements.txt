@@ -1,5 +1,5 @@
 ﻿Pillow==11.1.0
-numpy
+numpy==1.26.4
 cython
 pathlib
 scipy
