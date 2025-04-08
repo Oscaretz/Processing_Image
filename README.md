@@ -1,145 +1,107 @@
-# Image Processing Application
+# 🖼️ Image Processing with Python, NumPy & Cython
 
-A high-performance image processing application that implements various image filters (Gaussian blur, Sobel edge detection, and Median filter) in multiple implementations: Python, NumPy, and Cython. This project demonstrates the performance differences between implementations in different programming paradigms.
+Welcome to a fast and interactive web app for image preprocessing using filters like Sobel, Gaussian, and Median! Built with Python, NumPy, Pillow, and accelerated with Cython. Deployed live using **Streamlit Cloud**.
 
-## Features
-- Process images with multiple filter types:
-  - Gaussian blur filter (for smoothing)
-  - Sobel edge detection (for finding edges)
-  - Median filter (for noise reduction)
-- Compare performance across different implementations:
-  - Pure Python
-  - NumPy-accelerated Python
-  - Cython-accelerated implementation
-- Detailed performance measurements for benchmarking
+## 🎯 Project Objective
 
-## Team Members
-- Braulio Pérez
-- Oscar Martinez
-- Moises Carrillo
-- David Hernandez
+This project aims to showcase the potential of **High Performance Computing (HPC)** in image processing through a comparative study of three implementations: **pure Python**, **NumPy**, and **Cython**. Each version applies the same filters and reports the processing time, enabling a visual and performance-based evaluation of optimization techniques.
 
-## Project Structure
+Through this demonstration, we highlight how computing performance improves by moving from interpreted code to compiled extensions — a key idea behind HPC.
 
-```
-image_processing/
-├── build/                        # Compiled files (generated)
-├── cython/                       # Output directory for Cython processed images
-├── numpy/                        # Output directory for NumPy processed images
-├── python/                       # Output directory for Python processed images
-├── image.jpeg                    # Sample input image
-├── process_image_cython.pyx      # Cython implementation source
-├── process_image_cython.c        # Generated C code (after Cython compilation)
-├── process_image_numpy.py        # NumPy implementation
-├── process_image_python.py       # Pure Python implementation
-├── setup.py                      # Cython build configuration
-├── test.py                       # Main test script
-├── unit_test_cython.py           # Tests for Cython implementation
-├── unit_test_numpy.py            # Tests for NumPy implementation
-├── unit_test_python.py           # Tests for Python implementation
-├── README.md                    
-└── requirements.txt              # Project dependencies
-```
+---
 
-## Installation
+## 🚀 Features
 
-1. Clone the repository
-2. Install dependencies:
+- 🌀 Apply **Sobel**, **Gaussian**, and **Median** filters to images
+- 📈 Visualize and compare performance across Python, NumPy, and Cython
+- 📷 Upload your own images to test
+- ☁️ Fully deployable on **Streamlit Cloud**
+- ⚡ Performance boosted using **Cython** extensions
+
+---
+
+## 🛠️ Technologies Used
+
+- `Python` 🐍
+- `NumPy` 📦
+- `Pillow` 🖼️
+- `Cython` ⚡
+- `Streamlit` 🌐
+- `Matplotlib` 📊
+- `SciPy` 🔬
+- `Setuptools` 🛠️
+- `Pathlib` 🧱
+
+---
+
+## 📸 Example
+
+![App Screenshot](https://github.com/Oscaretz/Processing_Image/blob/main/screen_shoots/testing.gif)
+
+
+---
+
+## 📦 Installation
+
+To run the app locally:
 
 ```bash
-# Windows
+git clone https://github.com/Oscaretz/Processing_Image
+cd processing_image
 pip install -r requirements.txt
-
-# Unix/macOS
-pip3 install -r requirements.txt
+streamlit run app.py
 ```
 
-3. Build the Cython extension:
+---
+
+## ⚡ Cython Acceleration
+
+This project supports **Cython** to accelerate heavy operations. To compile Cython modules:
+
+1. Add your `.pyx` file (e.g., `process_image_cython.pyx`)
+2. Create or update `setup.py`:
+
+```python
+from setuptools import setup
+from Cython.Build import cythonize
+
+setup(
+    ext_modules=cythonize("process_image_cython.pyx")
+)
+```
+
+3. Compile it:
 
 ```bash
-# Windows
 python setup.py build_ext --inplace
-
-# Unix/macOS
-python3 setup.py build_ext --inplace
 ```
 
-## Usage Instructions
+---
 
-### Running Tests
+## 🧪 Running Tests
 
-To test a specific implementation:
+To compare performance:
 
 ```bash
-# Windows
-python unit_test_python.py  # Pure Python
-python unit_test_numpy.py   # NumPy
-python unit_test_cython.py  # Cython
-
-# Unix/macOS
-python3 unit_test_python.py  # Pure Python
-python3 unit_test_numpy.py   # NumPy
-python3 unit_test_cython.py  # Cython
+python unit_test_python.py
+python unit_test_numpy.py
+python unit_test_cython.py
 ```
 
-Each test will generate output images in the corresponding implementation folder:
-- `**/output_sobel_*.jpg`: Image with Sobel edge detection
-- `**/output_gaussian_*.jpg`: Image with Gaussian blur
-- `**/output_noise_reduction_*.jpg`: Image with median filter for noise reduction
+---
 
-The tests will also display processing times for each operation in the console.
+## 🌍 Deployment
 
-## Implementation Details
+This app is already deployed on [**Streamlit Cloud**](https://imageprocessing-python-numpy-cython.streamlit.app/)! 🔗 
 
-The project implements three main image processing filters:
+You can also deploy your own fork by pushing it to your GitHub and connecting it to Streamlit Cloud.
 
-1. **Gaussian Blur**: Smooths the image using a Gaussian kernel
-   - Configurable kernel size and sigma value
-   - Includes padding for edge handling
+---
 
-2. **Sobel Edge Detection**: Detects edges using the Sobel operator
-   - Implements both X and Y direction gradients
-   - Combines gradients using magnitude calculation
+## ✨ Credits
 
-3. **Median Filter**: Reduces noise by replacing each pixel with the median of neighboring pixels
-   - Uses a sliding window approach
-   - Configurable window size
+Created by Oscar Martinez Estevez  
+[GitHub ](https://github.com/Oscaretz)
 
-## Performance Considerations
+---
 
-- The **Pure Python** implementation uses list comprehension and basic loops
-- The **NumPy** implementation leverages vectorized operations for better performance
-- The **Cython** implementation compiles to C for maximum performance
-- Test results include timing measurements for each filter operation and implementation
-
-## Troubleshooting
-
-If you encounter an import error with the Cython module:
-
-1. Make sure you've properly built the Cython extension:
-   ```bash
-   # Windows
-   python setup.py build_ext --inplace
-   
-   # Unix/macOS
-   python3 setup.py build_ext --inplace
-   ```
-
-2. Check that you're importing the module correctly:
-   ```python
-   # Correct import
-   from process_image_cython import (
-       read_image,
-       save_image,
-       create_gaussian_kernel,
-       apply_filter,
-       apply_sobel,
-       apply_median_filter
-   )
-   ```
-
-## Requirements
-
-- Python 3.6+
-- Required libraries listed in requirements.txt
-- A compatible image file for processing (JPEG/JPG/PNG)# ssh
