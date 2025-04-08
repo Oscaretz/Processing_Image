@@ -100,8 +100,6 @@ You can also deploy your own fork by pushing it to your GitHub and connecting it
 
 ## ✨ Credits
 
-Created by Oscar Martinez Estevez  
-[GitHub ](https://github.com/Oscaretz)
-
+Created by [Oscar Martinez](https://github.com/Oscaretz), [Braulio Perez](https://github.com/BraulioPerez) and [David Hernandez](https://github.com/MDavidHernandezP).
 ---
 
