@@ -1,6 +1,6 @@
 # 🖼️ Image Processing with Python, NumPy & Cython
 
-Welcome to a fast and interactive web app for image preprocessing using filters like Sobel, Gaussian, and Median! Built with Python, NumPy, Pillow, and accelerated with Cython. Deployed live using **Streamlit Cloud**.
+Welcome to a fast and interactive web app for image processing using filters like Sobel, Gaussian, and Median! Built with Python, NumPy, Pillow, and accelerated with Cython. Deployed live using **Streamlit Cloud**.
 
 ## 🎯 Project Objective
 
